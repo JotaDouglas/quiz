@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_create_word/components/questao.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_create_word/components/resposta.dart';
 void main() {
   runApp(MyApp());
 }
-
+ 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -18,23 +18,33 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _indicePergunta = 0;
 
-  List perguntas = ["Qual é a sua cor favorita?", "Quantos anos você tem?"];
+  List<Map<String, Object>> _perguntas = [
+    {'texto': "Qual é o seu time favorito?",
+    'resposta': ["Corinthians", "Santos", "Botafogo"]},
+    {'texto': "Qual é a sua cidade favorita?",
+    'resposta': ["São Paulo", "Salvador", "curitiba"]},
+    {'texto': "Que dia é hoje?",
+    'resposta': ["Segunda-Feira", "Quarta-Feira", "Não sei"]},
+    ];
 
   void resposta() {
-    if (_indicePergunta < perguntas.length) {
+    if (finalDasPerguntas) {
       setState(() {
         _indicePergunta++;
       });       
-    }else{
-      setState(() {
-        _indicePergunta = 0;
-      });
     }
-    print(_indicePergunta);
+    finalDasPerguntas;
+  }
+
+  bool get finalDasPerguntas{
+    return _indicePergunta < _perguntas.length;
   }
 
   @override
   Widget build(BuildContext context) {
+    List respostas = (finalDasPerguntas? _perguntas[_indicePergunta]['resposta'] : []) as List;
+
+
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -47,15 +57,18 @@ class _MyAppState extends State<MyApp> {
             centerTitle: true,
             backgroundColor: Colors.blue,
           ),
-          body: Column(
+          body: finalDasPerguntas? Column(
             children: [
-              Questao(perguntas[_indicePergunta]),
-              RespostaComp("Alternativa 1"),
-              RespostaComp("Alternativa 2"),
-              RespostaComp("Alternativa 3"),
-              RespostaComp("Alternativa 4"),
+              Questao(_perguntas[_indicePergunta]['texto'].toString()),
+              ...respostas.map((e) => RespostaComp(e, resposta )).toList(),
+            ],
+          ): Column(
+            children: [
+              Text("Parabens você Concluiu!"),
             ],
           ),
-        ));
+        ),
+          
+        );
   }
 }
