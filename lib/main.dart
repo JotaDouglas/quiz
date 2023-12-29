@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_create_word/components/questao.dart';
-import 'package:flutter_create_word/components/resposta.dart';
+import 'package:flutter_create_word/components/questionario.dart';
+import 'package:flutter_create_word/components/resultado.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _indicePergunta = 0;
+  int _indicePergunta = 0;
 
   List<Map<String, Object>> _perguntas = [
     {'texto': "Qual é o seu time favorito?",
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    List respostas = (finalDasPerguntas? _perguntas[_indicePergunta]['resposta'] : []) as List;
+    
 
 
     return MaterialApp(
@@ -57,16 +57,13 @@ class _MyAppState extends State<MyApp> {
             centerTitle: true,
             backgroundColor: Colors.blue,
           ),
-          body: finalDasPerguntas? Column(
-            children: [
-              Questao(_perguntas[_indicePergunta]['texto'].toString()),
-              ...respostas.map((e) => RespostaComp(e, resposta )).toList(),
-            ],
-          ): Column(
-            children: [
-              Text("Parabens você Concluiu!"),
-            ],
-          ),
+          body: finalDasPerguntas? 
+          Questionario(
+            perguntas: _perguntas, 
+            indicePergunta: _indicePergunta, 
+            resposta: resposta,
+            )
+          : Resultado()
         ),
           
         );
