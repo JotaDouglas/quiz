@@ -4,7 +4,7 @@ import 'package:flutter_create_word/components/resposta.dart';
 class Questionario extends StatelessWidget {
   final List<Map<String, Object>> perguntas;
   final int indicePergunta;
-  final void Function() resposta;
+  final void Function(int) resposta;
 
   const Questionario({
     required this.perguntas,
@@ -18,11 +18,14 @@ class Questionario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List respostas = (finalDasPerguntas? perguntas[indicePergunta]['resposta'] : []) as List;
+    List<Map<String, Object>> respostas = finalDasPerguntas? perguntas[indicePergunta]['resposta']  as List<Map<String, Object>>:[];
     return Column(
             children: [
               Questao(perguntas[indicePergunta]['texto'].toString()),
-              ...respostas.map((e) => RespostaComp(e, resposta )).toList(),
+              ...respostas.map((resp) { return (RespostaComp(resp["texto"] as String, 
+                () => resposta(int.parse(resp['pontuacao'].toString())),
+              )
+              );}).toList(),
             ],
     );
   }
