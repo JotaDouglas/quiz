@@ -61,6 +61,13 @@ class _MyAppState extends State<MyApp> {
     return _indicePergunta < _perguntas.length;
   }
 
+  void reiniciarQuestionario(){
+    setState(() {
+      _indicePergunta = 0;
+      _pontuacaoTotal = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -81,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                   indicePergunta: _indicePergunta,
                   resposta: resposta,
                 )
-              : Resultado()),
+              : Resultado(_pontuacaoTotal, reiniciarQuestionario)),
     );
   }
 }

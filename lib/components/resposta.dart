@@ -11,23 +11,26 @@ class RespostaComp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.zero))
-        ),
-        onPressed: onSelected, 
-        child: Text(
-          resposta, 
-          style: TextStyle(
-            color: Colors.white, 
-            fontWeight: FontWeight.bold
-            ),
-        )
-      
-        ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+      child: Container(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.zero))
+          ),
+          onPressed: onSelected, 
+          child: Text(
+            resposta, 
+            style: TextStyle(
+              color: Colors.white, 
+              fontWeight: FontWeight.bold
+              ),
+          )
+        
+          ),
+      ),
     );
   }
 }
