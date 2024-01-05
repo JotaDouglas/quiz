@@ -24,8 +24,8 @@ class _MyAppState extends State<MyApp> {
       'texto': "Qual é o seu time favorito?",
       'resposta': [
         {"texto":"Corinthians", "pontuacao":10},
-        {"texto":"Santos", "pontuacao":5},
-        {"texto":"Botafogo", "pontuacao":2},
+        {"texto":"Real Madrid", "pontuacao":5},
+        {"texto":"Manchester City", "pontuacao":2},
       ]
     },
     {
@@ -33,15 +33,15 @@ class _MyAppState extends State<MyApp> {
       'resposta': [
         {"texto":"São Paulo","pontuacao":10},
         {"texto":"Salvador","pontuacao":5},
-        {"texto":"curitiba","pontuacao":2},
+        {"texto":"New Yorik","pontuacao":2},
       ]
     },
     {
-      'texto': "Que dia é hoje?",
+      'texto': "Qual é o seu esporte favorito?",
       'resposta': [
-        {"texto":"Segunda-Feira","pontuacao":10},
-        {"texto":"Quarta-Feira","pontuacao":5},
-        {"texto":"Não sei","pontuacao":2},
+        {"texto":"Futebol","pontuacao":10},
+        {"texto":"Basquete","pontuacao":5},
+        {"texto":"Futebol Americano","pontuacao":5},
       ]
     },
   ];
