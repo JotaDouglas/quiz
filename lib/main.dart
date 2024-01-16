@@ -23,25 +23,25 @@ class _MyAppState extends State<MyApp> {
     {
       'texto': "Qual é o seu time favorito?",
       'resposta': [
-        {"texto":"Corinthians", "pontuacao":10},
-        {"texto":"Real Madrid", "pontuacao":5},
-        {"texto":"Manchester City", "pontuacao":2},
+        {"texto": "Corinthians", "pontuacao": 10},
+        {"texto": "Real Madrid", "pontuacao": 3},
+        {"texto": "Manchester City", "pontuacao": 1},
       ]
     },
     {
       'texto': "Qual é a sua cidade favorita?",
       'resposta': [
-        {"texto":"São Paulo","pontuacao":10},
-        {"texto":"Salvador","pontuacao":5},
-        {"texto":"New Yorik","pontuacao":2},
+        {"texto": "São Paulo", "pontuacao": 5},
+        {"texto": "Salvador", "pontuacao": 10},
+        {"texto": "New Yorik", "pontuacao": 2},
       ]
     },
     {
       'texto': "Qual é o seu esporte favorito?",
       'resposta': [
-        {"texto":"Futebol","pontuacao":10},
-        {"texto":"Basquete","pontuacao":5},
-        {"texto":"Futebol Americano","pontuacao":5},
+        {"texto": "Futebol", "pontuacao": 10},
+        {"texto": "Basquete", "pontuacao": 7},
+        {"texto": "Futebol Americano", "pontuacao": 3},
       ]
     },
   ];
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
     if (finalDasPerguntas) {
       setState(() {
         _indicePergunta++;
-        _pontuacaoTotal+= pontuacao;
+        _pontuacaoTotal += pontuacao;
       });
     }
     print(_pontuacaoTotal);
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
     return _indicePergunta < _perguntas.length;
   }
 
-  void reiniciarQuestionario(){
+  void reiniciarQuestionario() {
     setState(() {
       _indicePergunta = 0;
       _pontuacaoTotal = 0;
